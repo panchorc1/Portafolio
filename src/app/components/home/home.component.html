@@ -1,9 +1,7 @@
 <div class="container">
-    <div class="jumbotron">
-        <!--Este Input se encargara de recibir los usuarios de entrada-->
-        <input [formControl]="findControl" type="text" class="form-control mr-sm-2" placeholder="Ingresa el nombre del Usuario">
-    </div>
-    <app-user>
-    </app-user>
-    <app-not-found></app-not-found>
+  <div class="jumbotron">
+    <input [formControl]="findControl" type="text" class="form-control mr-sm-2" placeholder="Github username">
+  </div>
+  <app-user *ngIf="user" [user]="user"></app-user>
+  <app-not-found *ngIf="error"></app-not-found>
 </div>

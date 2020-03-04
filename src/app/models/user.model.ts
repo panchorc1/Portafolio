@@ -1,10 +1,9 @@
 export class User {
-    login: String;
-    avatar: string;
-    fecha_cre: string;
-    ubicacion: string;
-    bio: string;
-    repost_public: string;
-    gists_public: string;
-    
+  login: string;
+  avatar_url: string;
+  created_at: string;
+  location: string;
+  bio: string;
+  public_repos: string;
+  public_gists: string;
 }

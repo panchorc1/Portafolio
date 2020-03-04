@@ -11,24 +11,26 @@ import { EMPTY } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-//Aqui el constructor esta recibiendo un parameto de tipo githubService, se encarga de traer el usuario
+
   constructor(private githubService: GithubService) { }
   findControl = new FormControl();
   error: boolean = false;
   user: User = null;
-  ngOnInit(): void {
+  ngOnInit() {
     this.findControl.valueChanges
-    .pipe(filter(value => value.length > 3),
-    debounceTime(1000),
-    switchMap(value =>
-      this.githubService.getUser(value).pipe(
-        catchError( err => {
-          this.user = null;
-          this.error = true;
-          return EMPTY;
-          
-        })))
-        ).subscribe(user => this.user = user);
-        }
+      .pipe(filter(value => value.length > 3),
+      debounceTime(1000),
+      switchMap(value =>
+        this.githubService.getUser(value).pipe(
+          catchError(err => {
+            this.user = null;
+            this.error = true;
+            return EMPTY;
+          })))
+      ).subscribe(user => {
+        this.user = user;
+        this.error = false;
+      });
   }
 
+}
